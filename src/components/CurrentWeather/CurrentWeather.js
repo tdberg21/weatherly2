@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-const CurrentWeather = ({name, currTemp, highTemp, lowTemp, currConditions, conditionSummary}) => {
+const CurrentWeather = ({city, state, currTemp, highTemp, lowTemp, currConditions, conditionSummary}) => {
     return(
       <div>
-        <h2> You are in {name}</h2>
+        <h2> You are in {city}, {state}</h2>
         <p>{currTemp} degrees</p>
         <p>{currConditions}</p>
         <p>High: {highTemp} degrees/ Low: {lowTemp} degrees</p>
@@ -11,7 +11,5 @@ const CurrentWeather = ({name, currTemp, highTemp, lowTemp, currConditions, cond
       </div>
     )
   }
-
-
 
 export default CurrentWeather;
