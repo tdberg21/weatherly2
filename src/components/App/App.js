@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Welcome from './Welcome.js'
-import Search from './Search.js'
-import CurrentWeather from './CurrentWeather.js'
-
+import Welcome from './Welcome.js';
+import Search from './Search.js';
+import CurrentWeather from './CurrentWeather.js';
 
 
 
