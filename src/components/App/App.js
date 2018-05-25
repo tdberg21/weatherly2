@@ -28,12 +28,12 @@ class App extends Component {
         <CurrentWeather 
           city= {this.state.city}
           state= {this.state.state}
-          currTemp= { data.current_observation.temp_f }
-          highTemp= { data.forecast.txt_forecast.forecastday[0].high }
+          currTemp= {data.current_observation.temp_f}
+          highTemp= {data.forecast.txt_forecast.forecastday[0].high}
           lowTemp='51'
-          currConditions= { cleanData().currConditions }  
+          currConditions= {cleanData().currConditions}  
           // img: {http://icons.wxug.com/i/c/k/mostlycloudy.gif} 
-          conditionSummary={data.forecast.simpleforecast.forecastday[0].fcttext }
+          conditionSummary={data.forecast.simpleforecast.forecastday[0].fcttext}
         />
       </div>
     );
