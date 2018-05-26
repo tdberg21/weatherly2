@@ -19,3 +19,4 @@ const cleanData = (fetchedData) => {
 }
 
 export default cleanData;
+

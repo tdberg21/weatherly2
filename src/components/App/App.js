@@ -9,8 +9,6 @@ import cleanData from '../../dataCleaner/dataCleaner.js';
 import TenDay from '../TenDay/TenDay.js'
 import cleanSevenData from '../../dataCleaner/cleanSevenData.js'
 
-console.log(cleanSevenData)
-
 class App extends Component {
   constructor() {
     super();
