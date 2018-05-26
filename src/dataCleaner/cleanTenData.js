@@ -1,5 +1,5 @@
 import React from 'react';
-import data from '../src/mock-data.js';
+import data from '../../src/mock-data.js';
 
 
 const cleanTenDay = (fetchedData) => {

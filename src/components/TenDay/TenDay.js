@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from '../Card/Card.js'
 import cleanTenData from '../../dataCleaner/cleanTenData.js'
 
-console.log(cleanTenDay())
+console.log(cleanTenData())
 
 class TenDay extends Component {
   constructor() {
@@ -11,11 +11,13 @@ class TenDay extends Component {
 
   render() {
     return (
+      
       <div>
       <Card 
-        dayName = {cleanTenDay().day}
-        high = {cleanTenDay().high}
-        low = {cleanTenDay().low}
+        dayName = {cleanTenData()[1].day}
+        image= {cleanTenData()[1].img}
+        high = {cleanTenData()[1].high}
+        low = {cleanTenData()[1].low}
       />
       </div>
       )
