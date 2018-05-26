@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../Card/Card.js'
-import cleanTenDay from '../../dataCleaner.js'
+import cleanTenData from '../../dataCleaner/cleanTenData.js'
 
 console.log(cleanTenDay())
 
