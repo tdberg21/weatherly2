@@ -8,7 +8,6 @@ import cleanData from '../../dataCleaner';
 // import SevenHour from '../SevenHour/SevenHour.js';
 // import TenDay from '../TenDay/TenDay.js'
 
-
 class App extends Component {
   constructor() {
     super();
@@ -19,7 +18,6 @@ class App extends Component {
     }
   }
 
-
   render() {
     return (
       <div className="App">
@@ -29,11 +27,11 @@ class App extends Component {
           city= {this.state.city}
           state= {this.state.state}
           currTemp= {data.current_observation.temp_f}
-          highTemp= {data.forecast.txt_forecast.forecastday[0].high}
-          lowTemp='51'
+          highTemp= {cleanData().highTemp}
+          lowTemp= {cleanData().lowTemp}
           currConditions= {cleanData().currConditions}  
           // img: {http://icons.wxug.com/i/c/k/mostlycloudy.gif} 
-          conditionSummary={data.forecast.simpleforecast.forecastday[0].fcttext}
+          conditionSummary={cleanData().conditionSummary}
         />
       </div>
     );
