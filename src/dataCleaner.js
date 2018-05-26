@@ -1,7 +1,10 @@
 import React from 'react';
 import data from '../src/mock-data'
+// import fetchData from '../src/apiCalls.js'
 
-const cleanData = () => {
+// const fetchedData = (state, city) => fetchData(state, city);
+
+const cleanData = (fetchedData) => {
  let cleanObj = {
     city: data.current_observation.display_location.city,
     state: data.current_observation.display_location.state,
@@ -15,6 +18,23 @@ const cleanData = () => {
   return cleanObj
 }
 
-console.log(cleanData());
+
+
+export const cleanTenDay = (fetchedData) => {
+  let tenHourArray = [];
+  const tenHour = data.forecast.simpleforecast.forecastday.forEach(day => {
+    tenHourArray.push({
+      day: day.date.weekday,
+      img: day.icon_url,
+      high: day.high.fahrenheit,
+      low: day.low.fahrenheit
+    })
+    return tenHourArray;
+});
+    return tenHourArray
+}
 
 export default cleanData;
+
+console.log(cleanTenDay());
+
