@@ -24,4 +24,17 @@ class TenDay extends Component {
   }
 }
 
-export default TenDay;
+  render() {
+    return (
+      <div>
+      {cleanTenData().map(day => {
+        return <Card 
+          dayName = {day.day}
+          image= {day.img}
+          high = {day.high}
+          low = {day.low}
+        />
+      })}
+      </div>
+    )
+}};

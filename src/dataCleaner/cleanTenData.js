@@ -3,17 +3,17 @@ import data from '../../src/mock-data.js';
 
 
 const cleanTenDay = (fetchedData) => {
-  let tenHourArray = [];
-  const tenHour = data.forecast.simpleforecast.forecastday.forEach(day => {
-    tenHourArray.push({
+  let tenDayArray = [];
+  const tenDay = data.forecast.simpleforecast.forecastday.forEach(day => {
+    tenDayArray.push({
       day: day.date.weekday,
       img: day.icon_url,
       high: day.high.fahrenheit,
       low: day.low.fahrenheit
     })
-    return tenHourArray;
+    return tenDayArray;
 });
-    return tenHourArray
+    return tenDayArray
 }
 
 export default cleanTenDay;
