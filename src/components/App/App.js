@@ -4,9 +4,12 @@ import Welcome from '../Welcome/Welcome.js';
 import Search from '../Search/Search.js';
 import CurrentWeather from '../CurrentWeather/CurrentWeather.js';
 import data from '../../mock-data';
-import cleanData from '../../dataCleaner';
+import cleanData from '../../dataCleaner/dataCleaner.js';
 // import SevenHour from '../SevenHour/SevenHour.js';
-// import TenDay from '../TenDay/TenDay.js'
+import TenDay from '../TenDay/TenDay.js'
+import cleanSevenData from '../../dataCleaner/cleanSevenData.js'
+
+console.log(cleanSevenData)
 
 class App extends Component {
   constructor() {
@@ -33,6 +36,7 @@ class App extends Component {
           // img: {http://icons.wxug.com/i/c/k/mostlycloudy.gif} 
           conditionSummary={cleanData().conditionSummary}
         />
+        <TenDay />
       </div>
     );
   }
