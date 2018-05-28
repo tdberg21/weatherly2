@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import Card from '../Card/Card.js'
 import cleanTenData from '../../dataCleaner/cleanTenData.js'
 
-// console.log(cleanTenData())
-
-export default class TenDay extends Component {
-  constructor() {
+class TenDay extends Component {
+  constructor(props) {
     super();
   };
 
   render() {
     return (
       <div>
-      {cleanTenData().map(day => {
+      {this.props.tenDay.map(day => {
         return <Card 
           dayName = {day.day}
           image= {day.img}
@@ -22,4 +20,6 @@ export default class TenDay extends Component {
       })}
       </div>
     )
-}};
+}}
+
+export default TenDay;
