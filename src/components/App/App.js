@@ -8,6 +8,7 @@ import SevenHour from '../SevenHour/SevenHour.js';
 import TenDay from '../TenDay/TenDay.js';
 import cleanSevenData from '../../dataCleaner/cleanSevenData.js';
 import cleanTenData from '../../dataCleaner/cleanTenData';
+import apiKey from '../../apiKey.js'
 
 class App extends Component {
   constructor() {
@@ -16,23 +17,32 @@ class App extends Component {
     this.fetchData.bind(this);
     this.state = {
       location: '',
+      city: '',
+      state: '',
+      currentWeather: [],
       sevenHour: [],
       tenDay: []
     }
   }
 
   fetchData = () => {
-    let locationArray = this.state.location.split(',');
+    let locationInput = this.state.location
+    let locationArray = locationInput.split(',');
     let city = locationArray[0];
     let state = locationArray[1];
-    console.log(city, state);
-    function fetchData(state, city) {
-      const url = `http://api.wunderground.com/api//conditions/q/${state}/${city}.json`;
+      const url = `http://api.wunderground.com/api/${apiKey}/conditions/q/${state}/${city}.json`;
       const promise = fetch(url)
-        .then(data => data.json());
+      .then(data => data.json())
+      .then(parsedData =>
+        this.setState({
+          city: city,
+          state: state,
+          currentWeather: cleanData(parsedData),
+          sevenHour: cleanSevenData(parsedData),
+          tenDay: cleanTenData(parsedData)
+        }))
       return promise;
     }
-  }
 
   render() {
     return (
@@ -47,13 +57,13 @@ class App extends Component {
         />
         <button onClick={this.fetchData}>Submit</button>
         <CurrentWeather
-          city={cleanData.city}
-          state={cleanData.state}
-          currTemp={cleanData.currTemp}
-          highTemp={cleanData.highTemp}
-          lowTemp={cleanData.lowTemp}
-          currConditions={cleanData.currConditions}
-          conditionSummary={cleanData.conditionSummary}
+          city={this.state.city}
+          state={this.state.state}
+          // currTemp={cleanData.currTemp}
+          // highTemp={cleanData.highTemp}
+          // lowTemp={cleanData.lowTemp}
+          // currConditions={cleanData.currConditions}
+          // conditionSummary={cleanData.conditionSummary}
         />
         <button onClick={() => {
           this.setState({
