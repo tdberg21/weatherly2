@@ -12,11 +12,11 @@ class SevenHour extends Component {
     return (
       <div>
         {this.props.sevenHour.map(hour => {
-          // return <Card
-          //   hour={hour.hour}
-          //   image={hour.img}
-          //   temp={hour.temp}
-          // />
+          return <Card
+            hour={hour.hour}
+            image={hour.img}
+            temp={hour.temp}
+          />
         })}
       </div>
     )

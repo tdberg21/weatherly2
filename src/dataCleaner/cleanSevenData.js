@@ -16,6 +16,6 @@ const cleanSevenData = (fetchedData) => {
   return sevenHourArray
 }
 
-console.log(cleanSevenData());
+const cleanSevenHourArray= cleanSevenData()
 
 export default cleanSevenData;
