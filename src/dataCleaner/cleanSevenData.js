@@ -1,11 +1,10 @@
-import React from 'react';
 import data from '../../src/mock-data.js';
 
 
 const cleanSevenData = (fetchedData) => {
   let hourlyArray = data.hourly_forecast.splice(1, 7);
   let sevenHourArray = [];
-  const sevenHour = hourlyArray.forEach(hour => {
+  hourlyArray.forEach(hour => {
     sevenHourArray.push({
       hour: hour.FCTTIME.civil,
       img: hour.icon_url,
@@ -16,6 +15,6 @@ const cleanSevenData = (fetchedData) => {
   return sevenHourArray
 }
 
-const cleanSevenHourArray= cleanSevenData()
+// const cleanSevenHourArray= cleanSevenData()
 
 export default cleanSevenData;

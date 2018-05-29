@@ -3,7 +3,6 @@ import './App.css';
 import Welcome from '../Welcome/Welcome.js';
 import Search from '../Search/Search.js';
 import CurrentWeather from '../CurrentWeather/CurrentWeather.js';
-import data from '../../mock-data';
 import cleanData from '../../dataCleaner/dataCleaner.js';
 import SevenHour from '../SevenHour/SevenHour.js';
 import TenDay from '../TenDay/TenDay.js';
@@ -16,14 +15,13 @@ class App extends Component {
     this.searchButton.bind(this);
     this.state = {
       location: '',
-      data,
       sevenHour: [],
       tenDay: []
     }
   }
 
   searchButton = () => {
-    console.log(this.state.location);
+    console.log(this.state.location.split(','));
   }
 
   render() {
@@ -39,13 +37,13 @@ class App extends Component {
         />
         <button onClick={this.searchButton}>Submit</button>
         <CurrentWeather
-          city={cleanData().city}
-          state={cleanData().state}
-          currTemp={data.current_observation.temp_f}
-          highTemp={cleanData().highTemp}
-          lowTemp={cleanData().lowTemp}
-          currConditions={cleanData().currConditions}
-          conditionSummary={cleanData().conditionSummary}
+          city={cleanData.city}
+          state={cleanData.state}
+          currTemp={cleanData.currTemp}
+          highTemp={cleanData.highTemp}
+          lowTemp={cleanData.lowTemp}
+          currConditions={cleanData.currConditions}
+          conditionSummary={cleanData.conditionSummary}
         />
         <button onClick={() => {
           this.setState({
