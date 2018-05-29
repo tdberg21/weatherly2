@@ -11,8 +11,9 @@ import cleanTenData from '../../dataCleaner/cleanTenData';
 
 class App extends Component {
   constructor() {
+
     super();
-    this.searchButton.bind(this);
+    this.fetchData.bind(this);
     this.state = {
       location: '',
       sevenHour: [],
@@ -20,8 +21,17 @@ class App extends Component {
     }
   }
 
-  searchButton = () => {
-    console.log(this.state.location.split(','));
+  fetchData = () => {
+    let locationArray = this.state.location.split(',');
+    let city = locationArray[0];
+    let state = locationArray[1];
+    console.log(city, state);
+    function fetchData(state, city) {
+      const url = `http://api.wunderground.com/api//conditions/q/${state}/${city}.json`;
+      const promise = fetch(url)
+        .then(data => data.json());
+      return promise;
+    }
   }
 
   render() {
@@ -35,7 +45,7 @@ class App extends Component {
           })
         }}
         />
-        <button onClick={this.searchButton}>Submit</button>
+        <button onClick={this.fetchData}>Submit</button>
         <CurrentWeather
           city={cleanData.city}
           state={cleanData.state}
