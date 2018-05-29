@@ -3,7 +3,7 @@ import data from '../../src/mock-data'
 
 // const fetchedData = (state, city) => fetchData(state, city);
 
-const dataCleaner = (fetchedData) => {
+const cleanData = (fetchedData) => {
  let cleanObj = {
     city: data.current_observation.display_location.city,
     state: data.current_observation.display_location.state,
@@ -17,7 +17,7 @@ const dataCleaner = (fetchedData) => {
   return cleanObj
 }
 
-let cleanData = dataCleaner();
+// let cleanData = dataCleaner();
 
 export default cleanData;
 
