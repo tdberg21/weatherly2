@@ -78,12 +78,12 @@ class App extends Component {
         />
         <button onClick={() => {
           this.setState({
-            sevenHour: cleanSevenData()
+            // sevenHour: cleanSevenData()
           })
         }}> Show Seven Hour Weather </button>
         <button onClick={() => {
           this.setState({
-            tenDay: cleanTenData()
+            // tenDay: cleanTenData()
           })
         }}> Show Ten Day Weather </button>
         <TenDay

@@ -1,9 +1,7 @@
-import data from '../../src/mock-data.js';
-
 
 const cleanTenDay = (fetchedData) => {
   let tenDayArray = [];
-  data.forecast.simpleforecast.forecastday.forEach(day => {
+  fetchedData.forecast.simpleforecast.forecastday.forEach(day => {
     tenDayArray.push({
       day: day.date.weekday,
       img: day.icon_url,
