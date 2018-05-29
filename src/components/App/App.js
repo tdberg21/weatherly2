@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Welcome from '../Welcome/Welcome.js';
 import Search from '../Search/Search.js';
 import CurrentWeather from '../CurrentWeather/CurrentWeather.js';
@@ -12,7 +11,6 @@ import apiKey from '../../apiKey.js'
 
 class App extends Component {
   constructor() {
-
     super();
     this.fetchData.bind(this);
     this.state = {
@@ -30,7 +28,7 @@ class App extends Component {
     let locationArray = locationInput.split(',');
     let city = locationArray[0];
     let state = locationArray[1];
-      const url = `http://api.wunderground.com/api/${apiKey}/conditions/q/${state}/${city}.json`;
+    const url = `http://api.wunderground.com/api/${apiKey}/conditions/geolookup/hourly/forecast10day/q/${state}/${city}.json`;
       const promise = fetch(url)
       .then(data => data.json())
       .then(parsedData =>
@@ -45,9 +43,22 @@ class App extends Component {
     }
 
   render() {
-    return (
+    if (this.state.city === '') {
+      return (
+        <div>
+          <Welcome />
+          <input type='text' placeholder='Enter a city' onChange={(event) => {
+            this.setState({
+              location: event.target.value
+            })
+          }}
+          />
+          <button onClick={this.fetchData}>Submit</button>
+        </div>
+      )   
+    } else {
+      return (
       <div className="App">
-        <Welcome />
         <Search />
         <input type='text' placeholder='Enter a city' onChange={(event) => {
           this.setState({
@@ -59,11 +70,11 @@ class App extends Component {
         <CurrentWeather
           city={this.state.city}
           state={this.state.state}
-          // currTemp={cleanData.currTemp}
-          // highTemp={cleanData.highTemp}
-          // lowTemp={cleanData.lowTemp}
-          // currConditions={cleanData.currConditions}
-          // conditionSummary={cleanData.conditionSummary}
+          currTemp={this.state.currentWeather.currTemp}
+          highTemp={this.state.currentWeather.highTemp}
+          lowTemp={this.state.currentWeather.lowTemp}
+          currConditions={this.state.currentWeather.currConditions}
+          conditionSummary={this.state.currentWeather.conditionSummary}
         />
         <button onClick={() => {
           this.setState({
@@ -81,6 +92,7 @@ class App extends Component {
         sevenHour={this.state.sevenHour}/>
       </div>
     );
+    }
   }
 }
 
