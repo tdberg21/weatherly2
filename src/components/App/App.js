@@ -16,7 +16,7 @@ class App extends Component {
     this.searchButton.bind(this);
     this.state = {
       location: '',
-      data: data,
+      data,
       sevenHour: [],
       tenDay: []
     }
@@ -45,7 +45,6 @@ class App extends Component {
           highTemp={cleanData().highTemp}
           lowTemp={cleanData().lowTemp}
           currConditions={cleanData().currConditions}
-          // img: {http://icons.wxug.com/i/c/k/mostlycloudy.gif} 
           conditionSummary={cleanData().conditionSummary}
         />
         <button onClick={() => {
@@ -60,8 +59,8 @@ class App extends Component {
         }}> Show Ten Day Weather </button>
         <TenDay
           tenDay={this.state.tenDay} />
-        {/* <SevenHour 
-        sevenHour={this.state.sevenHour}/> */}
+        <SevenHour 
+        sevenHour={this.state.sevenHour}/>
       </div>
     );
   }
