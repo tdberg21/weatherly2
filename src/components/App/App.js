@@ -89,10 +89,12 @@ class App extends Component {
             // tenDay: cleanTenData()
           })
         }}> Show Ten Day Weather </button>
-        <TenDay
-          tenDay={this.state.tenDay} />
-        <SevenHour 
-        sevenHour={this.state.sevenHour}/>
+        <div className="cardContainer">
+          <TenDay 
+            tenDay={this.state.tenDay} />
+          <SevenHour 
+          sevenHour={this.state.sevenHour}/>
+        </div>
       </div>
     );
     }

@@ -1,12 +1,13 @@
 import React from 'react';
+import './Card.css'
 
 const Card = (props) => {
   return (
     <div>
       {
         props.dayName &&
-        (<div>
-          <p> day: {props.dayName} </p>
+        (<div className="tenCard">
+          <p> {props.dayName} </p>
           <img src={props.image} alt="weather-icon"></img>
           <p> high: {props.high} </p>
           <p> low: {props.low} </p>
@@ -14,8 +15,8 @@ const Card = (props) => {
       }
       {
         props.hour &&
-        (<div>
-          <p> hour: {props.hour} </p>
+        (<div className="sevenCard">
+          <p> {props.hour} </p>
           <img src={props.image} alt="weather-icon"></img>
           <p> temp: {props.temp} </p>
         </div>)

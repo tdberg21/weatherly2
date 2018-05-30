@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Card from '../Card/Card.js'
+import './TenDay.css'
+
 
 class TenDay extends Component {
   constructor(props) {
@@ -8,7 +10,7 @@ class TenDay extends Component {
 
   render() {
     return (
-      <div>
+      <div className="tenDay">
         {this.props.tenDay.map((day, index) => {
           return <Card
             dayName={day.day}

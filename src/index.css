@@ -4,3 +4,8 @@ body {
   font-family: sans-serif;
   background-image: url(https://www.cobalt-sky.com/wp-content/themes/cobalt-sky/assets/images/head_bg.jpg)
 }
+
+#root {
+  display: flex;
+  justify-content: center;
+}
