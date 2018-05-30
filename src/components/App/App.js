@@ -55,7 +55,7 @@ class App extends Component {
             })
           }}
           />
-          <button onClick={this.fetchData}>Submit</button>
+          <button className="submitButton" onClick={this.fetchData}>Submit</button>
           </div>
         </div>
       )   
@@ -69,7 +69,7 @@ class App extends Component {
           })
         }}
         />
-        <button onClick={this.fetchData}>Submit</button>
+        <button className="submitButton" onClick={this.fetchData}>Submit</button>
         <CurrentWeather
           city={this.state.city}
           state={this.state.state}
@@ -79,16 +79,6 @@ class App extends Component {
           currConditions={this.state.currentWeather.currConditions}
           conditionSummary={this.state.currentWeather.conditionSummary}
         />
-        <button onClick={() => {
-          this.setState({
-            // sevenHour: cleanSevenData()
-          })
-        }}> Show Seven Hour Weather </button>
-        <button onClick={() => {
-          this.setState({
-            // tenDay: cleanTenData()
-          })
-        }}> Show Ten Day Weather </button>
         <div className="cardContainer">
           <TenDay 
             tenDay={this.state.tenDay} />
