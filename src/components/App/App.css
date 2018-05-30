@@ -31,11 +31,6 @@ input {
   width: 40%;
   margin-right: 10px;
   font-size: 1.5em;
-  /* height: 100%; */
-}
-
-button {
-  /* height: 100%; */
 }
 
 @keyframes App-logo-spin {

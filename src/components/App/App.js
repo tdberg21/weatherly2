@@ -14,6 +14,7 @@ class App extends Component {
   constructor() {
     super();
     this.fetchData.bind(this);
+    // this.splitLocation.bind(this);
     this.state = {
       location: '',
       city: '',
@@ -24,6 +25,14 @@ class App extends Component {
     }
   }
 
+  // splitLocation() {
+  //   let locationInput = this.state.location
+  //   let locationArray = locationInput.split(',');
+  //   let city = locationArray[0];
+  //   let state = locationArray[1];
+  //   this.fetchData(city, state)
+  // }
+  
   fetchData = () => {
     let locationInput = this.state.location
     let locationArray = locationInput.split(',');
@@ -40,7 +49,31 @@ class App extends Component {
           sevenHour: cleanSevenData(parsedData),
           tenDay: cleanTenData(parsedData)
         }))
+      .then(data => this.sendToLocalStorage())
       return promise;
+    }
+
+    sendToLocalStorage() {
+      let stringifiedWeather = JSON.stringify(this.state);
+      localStorage.setItem('localWeather', stringifiedWeather);
+    }
+    
+    getFromLocalStorage() {
+      
+      let localWeather = JSON.parse(localStorage.getItem('localWeather'));
+      this.setState({
+        city: localWeather.city,
+        state: localWeather.state,
+        currentWeather: localWeather.currentWeather,
+        sevenHour: localWeather.sevenHour,
+        tenDay: localWeather.tenDay
+      })
+    }
+
+    componentDidMount() {
+      if (localStorage.length > 0) {
+        this.getFromLocalStorage();
+      }
     }
 
   render() {
@@ -55,7 +88,7 @@ class App extends Component {
             })
           }}
           />
-          <button className="submitButton" onClick={this.fetchData}>Submit</button>
+          <button className="submitButton" onClick={this.fetchData}>Submit </button>
           </div>
         </div>
       )   
