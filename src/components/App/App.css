@@ -27,11 +27,6 @@
   to { transform: rotate(360deg); }
 }
 
-/*.cardContainer {
-    justify-content: center;
-    width: 30%;
-}*/
-
 * {
   font-family: helvetica;
 }
