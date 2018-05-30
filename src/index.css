@@ -9,3 +9,9 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.currentCondition {
+  color: #D6E5E2;
+  font-size: 1.5rem;
+}
+

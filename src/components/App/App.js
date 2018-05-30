@@ -40,11 +40,12 @@ class App extends Component {
           sevenHour: cleanSevenData(parsedData),
           tenDay: cleanTenData(parsedData)
         }))
+      .catch(error => alert( 'This is not a valid location' ));
       return promise;
     }
 
   render() {
-    if (this.state.city === '') {
+    if (!this.state.city) {
       return (
         <div>
           <Welcome />
@@ -63,13 +64,15 @@ class App extends Component {
       return (
       <div className="App">
         <Search />
+        <div className="search-container">
         <input type='text' placeholder='Enter a City and State or a Zip Code.' onChange={(event) => {
           this.setState({
             location: event.target.value
           })
         }}
         />
-        <button className="submitButton" onClick={this.fetchData}>Submit</button>
+        <button className="submitButton"onClick={this.fetchData}>Submit</button>
+          </div>
         <CurrentWeather
           city={this.state.city}
           state={this.state.state}
