@@ -9,8 +9,8 @@ const Card = (props) => {
         (<div className="tenCard">
           <p> {props.dayName} </p>
           <img src={props.image} alt="weather-icon"></img>
-          <p> high: {props.high} </p>
-          <p> low: {props.low} </p>
+          <p> {props.high} &#8457; </p>
+          <p> {props.low} &#8457; </p>
         </div>)
       }
       {
@@ -18,7 +18,7 @@ const Card = (props) => {
         (<div className="sevenCard">
           <p> {props.hour} </p>
           <img src={props.image} alt="weather-icon"></img>
-          <p> temp: {props.temp} </p>
+          <p> {props.temp} &#8457; </p>
         </div>)
       }
       </div>

@@ -1,0 +1,8 @@
+  .currentWeather{
+    border: .3px solid #E1EFEB;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: rgba(195,224,216, 0.3);
+    margin: 10px 10px 10px 10px;
+    color: #213E37;
+}

@@ -4,12 +4,12 @@ import './CurrentWeather.css';
 
 const CurrentWeather = ({city, state, currTemp, highTemp, lowTemp, currConditions, conditionSummary}) => {
     return(
-      <div>
-        <h2> You are in {city}, {state}</h2>
-        <p>{currTemp} degrees</p>
-        <p>{currConditions}</p>
+      <div className="currentWeather">
+        <h3> {city}, {state}</h3>
+        <h2> {currTemp} &#8457;</h2>
+        <h2> {currConditions}</h2>
         <img src="http://icons.wxug.com/i/c/k/mostlycloudy.gif" alt="mostly cloudy icon"></img>
-        <p>High: {highTemp} degrees/ Low: {lowTemp} degrees</p>
+        <p> {highTemp} &#8457; &nbsp;&nbsp; {lowTemp} &#8457;</p>
         <p>{conditionSummary}</p>
       </div>
     )
