@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../Card/Card.js'
+import './SevenHour.css'
 // import cleanSevenData from '../../dataCleaner/cleanSevenData.js'
 
 
@@ -10,9 +11,9 @@ class SevenHour extends Component {
 
   render() {
     return (
-      <div>
+      <div className="sevenHour">
         { this.props.sevenHour.map((hour, index) => {
-          return <Card
+          return <Card className="sevenCard"
             hour={hour.hour}
             image={hour.img}
             temp={hour.temp}

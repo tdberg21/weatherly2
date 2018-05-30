@@ -8,6 +8,7 @@ import TenDay from '../TenDay/TenDay.js';
 import cleanSevenData from '../../dataCleaner/cleanSevenData.js';
 import cleanTenData from '../../dataCleaner/cleanTenData';
 import apiKey from '../../apiKey.js'
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -86,10 +87,12 @@ class App extends Component {
             // tenDay: cleanTenData()
           })
         }}> Show Ten Day Weather </button>
-        <TenDay
-          tenDay={this.state.tenDay} />
-        <SevenHour 
-        sevenHour={this.state.sevenHour}/>
+        <div className="cardContainer">
+          <TenDay 
+            tenDay={this.state.tenDay} />
+          <SevenHour 
+          sevenHour={this.state.sevenHour}/>
+        </div>
       </div>
     );
     }

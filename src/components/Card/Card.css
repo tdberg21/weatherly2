@@ -1,0 +1,16 @@
+.tenCard {
+  border: .3px solid grey;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 120px;
+  background: rgba(232,232,232, 0.1);
+  margin: 10px 10px 10px 10px;
+}
+
+.sevenCard {
+  border: .3px solid grey;
+  justify-content: center;
+  width: 120px;
+  background: rgba(232,232,232, 0.1);
+  margin: 10px 10px 10px 10px;
+}
