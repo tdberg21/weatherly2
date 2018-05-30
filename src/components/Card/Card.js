@@ -1,12 +1,12 @@
 import React from 'react';
 import './Card.css'
 
-const Card = (props) => {
+const Card = (props, index) => {
   return (
     <div>
       {
         props.dayName &&
-        (<div className="tenCard">
+        (<div className="tenCard ${index}">
           <p> {props.dayName} </p>
           <img src={props.image} alt="weather-icon"></img>
           <p> {props.high} &#8457; </p>

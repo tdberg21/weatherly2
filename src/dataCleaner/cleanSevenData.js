@@ -1,6 +1,5 @@
 
 const cleanSevenData = (fetchedData) => {
-console.log(fetchedData)
   let hourlyArray = fetchedData.hourly_forecast.splice(1, 7);
   let sevenHourArray = [];
   hourlyArray.forEach(hour => {
