@@ -8,6 +8,7 @@ import TenDay from '../TenDay/TenDay.js';
 import cleanSevenData from '../../dataCleaner/cleanSevenData.js';
 import cleanTenData from '../../dataCleaner/cleanTenData';
 import apiKey from '../../apiKey.js'
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -47,20 +48,22 @@ class App extends Component {
       return (
         <div>
           <Welcome />
-          <input type='text' placeholder='Enter a city' onChange={(event) => {
+          <div className="search-container">
+            <input type='text' placeholder='Enter a City and State or a Zip Code' onChange={(event) => {
             this.setState({
               location: event.target.value
             })
           }}
           />
           <button onClick={this.fetchData}>Submit</button>
+          </div>
         </div>
       )   
     } else {
       return (
       <div className="App">
         <Search />
-        <input type='text' placeholder='Enter a city' onChange={(event) => {
+        <input type='text' placeholder='Enter a City and State or a Zip Code.' onChange={(event) => {
           this.setState({
             location: event.target.value
           })

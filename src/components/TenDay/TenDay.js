@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Card from '../Card/Card.js'
-// import cleanTenData from '../../dataCleaner/cleanTenData.js'
 
 class TenDay extends Component {
   constructor(props) {
