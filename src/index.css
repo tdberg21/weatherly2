@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 20px;
   font-family: sans-serif;
+  background-image: url(https://www.cobalt-sky.com/wp-content/themes/cobalt-sky/assets/images/head_bg.jpg)
 }
 
 #root {

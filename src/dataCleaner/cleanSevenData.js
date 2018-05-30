@@ -1,5 +1,3 @@
-// import data from '../../src/mock-data.js';
-
 
 const cleanSevenData = (fetchedData) => {
 console.log(fetchedData)

@@ -1,4 +1,6 @@
 import React from 'react';
+import './CurrentWeather.css';
+
 
 const CurrentWeather = ({city, state, currTemp, highTemp, lowTemp, currConditions, conditionSummary}) => {
     return(

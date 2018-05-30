@@ -1,7 +1,3 @@
-// import data from '../../src/mock-data'
-// import fetchData from '../src/apiCalls.js'
-
-// const fetchedData = (state, city) => fetchData(state, city);
 
 const cleanData = (fetchedData) => {
  let cleanObj = {
@@ -13,11 +9,9 @@ const cleanData = (fetchedData) => {
     currConditions: fetchedData.current_observation.weather,
     conditionSummary: fetchedData.forecast.txt_forecast.forecastday[0].fcttext
   }
-
   return cleanObj
 }
 
-// let cleanData = dataCleaner();
 
 export default cleanData;
 
