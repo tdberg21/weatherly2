@@ -14,7 +14,6 @@ class App extends Component {
   constructor() {
     super();
     this.fetchData.bind(this);
-    this.updateLocation.bind(this);
     this.state = {
       city: '',
       state: '',
