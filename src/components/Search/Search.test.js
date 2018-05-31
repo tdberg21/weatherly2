@@ -8,7 +8,7 @@ describe('Search unit test', () => {
     
     const expectedLocation = '';
     const actualLocation = renderedSearch.state('location');
-    
+   
     expect(actualLocation).toBe(expectedLocation);
   })
   
@@ -40,5 +40,7 @@ describe('Search unit test', () => {
     })
     
     
+
   })
   
+

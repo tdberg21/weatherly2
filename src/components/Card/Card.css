@@ -1,18 +1,20 @@
 .tenCard {
-  border: .2px solid #E1EFEB;
+  border: .1px solid #E1EFEB;
   justify-content: center;
   flex-wrap: wrap;
   width: 120px;
-  background-color: rgba(195,224,216, 0.3);
+  background-color: rgba(195,224,216, 0.5);
+  border-radius: 5px;
   margin: 10px 10px 10px 10px;
   color: #213E37;
 }
 
 .sevenCard {
-  border: .2px solid #E1EFEB;
+  border: .1px solid #E1EFEB;
   justify-content: center;
   width: 120px;
-  background-color: rgba(195,224,216, 0.3);
+  background-color: rgba(195,224,216, 0.5);
+  border-radius: 5px;
   margin: 10px 10px 10px 10px;
   color: #213E37;
 }
