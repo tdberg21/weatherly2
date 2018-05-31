@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { shallow } from 'enzyme';
+global.localStorage = {
+  setItem: () => {},
+  getItem: () => {}
+}
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -10,14 +14,6 @@ it('renders without crashing', () => {
 });
 
 describe('App default state', () => {
-  test('should have a default location of an empty string', () => {
-    const renderedApp = shallow(<App />)
-    
-    const expectedLocation = '';
-    const actualLocation = renderedApp.state('location');
-    
-    expect(actualLocation).toEqual(expectedLocation);
-  })
   
   test('should have a default city of an empty string', () => {
     const renderedApp = shallow(<App />)
@@ -64,4 +60,37 @@ describe('App default state', () => {
     expect(actualTenDay).toEqual(expectedTenDay);
   })
 });
+
+describe('App Unit Tests', () => {
+  test('if there is no location, it should render the welcome component', () => {
+    const renderedApp = shallow(<App />, { disableLifecycleMethods:true })
+    const mockState = {
+      city: '',
+      state: '',
+      currentWeather: [],
+      sevenHour: [],
+      tenDay: []
+    };
+    renderedApp.setState(mockState);
+    renderedApp.render();
+    const expectedState = 1;
+    const actualState = renderedApp.find('Welcome').length;
+
+    expect(actualState).toBe(expectedState);
+  });
+
+  test('if there is a location, it should render the current weather', () => {
+    const renderedApp = shallow(<App />, { disableLifecycleMethods: true })
+    const mockState = {
+      city: 'Sterling',
+      state: 'VA',
+    };
+    renderedApp.setState(mockState);
+    renderedApp.render();
+    const expectedState = 1;
+    const actualState = renderedApp.find('CurrentWeather').length;
+
+    expect(actualState).toBe(expectedState);
+  });
+})
 

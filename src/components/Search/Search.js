@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Search extends Component{ 
+class Search extends Component { 
   constructor (props) {
     super(props);
     this.submitLocationToApp = this.submitLocationToApp.bind(this);

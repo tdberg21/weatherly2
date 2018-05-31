@@ -30,6 +30,7 @@ describe('Search unit test', () => {
     
     const renderSearch = shallow(<Search 
       submitLocation = { mockSubmitLocation }/>)
+    
       const expectedArguments = 'Portland';
       
       renderSearch.setState({ location: 'Portland' })
