@@ -7,7 +7,7 @@ import SevenHour from '../SevenHour/SevenHour.js';
 import TenDay from '../TenDay/TenDay.js';
 import cleanSevenData from '../../dataCleaner/cleanSevenData.js';
 import cleanTenData from '../../dataCleaner/cleanTenData';
-import apiKey from '../../apiKey.js'
+import apiKey from '../../apiKey.js';
 import './App.css';
 
 class App extends Component {
@@ -23,63 +23,62 @@ class App extends Component {
       tenDay: []
     }
   }
-
+  
   fetchData = (location) => {
     let locationArray = location.split(',');
     let city = locationArray[0];
     let state = locationArray[1];
     const url = `http://api.wunderground.com/api/${apiKey}/conditions/geolookup/hourly/forecast10day/q/${state}/${city}.json`;
-      const promise = fetch(url)
-      .then(data => data.json())
-      .then(parsedData =>
-        this.setState({
-          city: city,
-          state: state,
-          currentWeather: cleanData(parsedData),
-          sevenHour: cleanSevenData(parsedData),
-          tenDay: cleanTenData(parsedData)
-        }))
-        .then(data => this.sendToLocalStorage())
-      .catch(error => alert( 'This is not a valid location' ));
+    const promise = fetch(url)
+    .then(data => data.json())
+    .then(parsedData =>
+      this.setState({
+        city: city,
+        state: state,
+        currentWeather: cleanData(parsedData),
+        sevenHour: cleanSevenData(parsedData),
+        tenDay: cleanTenData(parsedData)
+      }))
+      .then(data => this.sendToLocalStorage())
+      .catch(error => alert( 'This is not a valid location' ))
       return promise;
     }
-
-
-  sendToLocalStorage() {
-    let stringifiedWeather = JSON.stringify(this.state);
-    localStorage.setItem('localWeather', stringifiedWeather);
-  }
-
-  getFromLocalStorage() {
-    let localWeather = JSON.parse(localStorage.getItem('localWeather'));
-    this.setState({
-      city: localWeather.city,
-      state: localWeather.state,
-      currentWeather: localWeather.currentWeather,
-      sevenHour: localWeather.sevenHour,
-      tenDay: localWeather.tenDay
-    })
-  }
-
-  componentDidMount() {
-    if (localStorage.length > 0) {
-      this.getFromLocalStorage();
+    
+    sendToLocalStorage() {
+      let stringifiedWeather = JSON.stringify(this.state);
+      localStorage.setItem('localWeather', stringifiedWeather);
     }
-  }  
-
-  render() {
-    if (!this.state.city) {
-      return (
-        <div>
+    
+    getFromLocalStorage() {
+      let localWeather = JSON.parse(localStorage.getItem('localWeather'));
+      this.setState({
+        city: localWeather.city,
+        state: localWeather.state,
+        currentWeather: localWeather.currentWeather,
+        sevenHour: localWeather.sevenHour,
+        tenDay: localWeather.tenDay
+      })
+    }
+    
+    componentDidMount() {
+      if (localStorage.length > 0) {
+        this.getFromLocalStorage();
+      };
+    };
+    
+    render() {
+      if (!this.state.city) {
+        return (
+          <div>
           <Welcome />
           <Search fetchData={this.fetchData} />
-        </div>
-      )   
-    } else {
-      return (
-      <div className="App">
-         <Search fetchData={this.fetchData} handleLocationUpdate={this.updateLocation} location={this.state.location}/>
-        <CurrentWeather
+          </div>
+        )   
+      } else {
+        return (
+          <div className="App">
+          <Search fetchData={this.fetchData} />
+          <CurrentWeather
           city={this.state.city}
           state={this.state.state}
           currTemp={this.state.currentWeather.currTemp}
@@ -87,17 +86,17 @@ class App extends Component {
           lowTemp={this.state.currentWeather.lowTemp}
           currConditions={this.state.currentWeather.currConditions}
           conditionSummary={this.state.currentWeather.conditionSummary}
-        />
-        <div className="cardContainer">
+          />
+          <div className="cardContainer">
           <TenDay 
-            tenDay={this.state.tenDay} />
+          tenDay={this.state.tenDay} />
           <SevenHour 
           sevenHour={this.state.sevenHour}/>
-        </div>
-      </div>
-    );
-    }
-  }
-}
-
-export default App;
+          </div>
+          </div>
+        );
+      }
+    };
+  };
+  
+  export default App;
