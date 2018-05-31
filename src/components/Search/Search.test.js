@@ -9,7 +9,6 @@ describe('Search unit test', () => {
 
     const expectedLocation = '';
     const actualLocation = renderedSearch.state('location');
-
     expect(actualLocation).toBe(expectedLocation);
   })
 
@@ -36,11 +35,8 @@ describe('Search unit test', () => {
     renderSearch.setState({ location: 'Portland' })
     renderSearch.instance().submitLocationToApp({preventDefault: jest.fn()})
 
-
     expect(submitLocationToApp).toHaveBeenCalledWith(expectedArguments)
   })
-
-
 })
 
 //test that location has a default of an empty string

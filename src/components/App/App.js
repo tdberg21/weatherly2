@@ -14,6 +14,7 @@ class App extends Component {
   constructor() {
     super();
     this.fetchData.bind(this);
+    this.updateLocation.bind(this);
     this.state = {
       city: '',
       state: '',
@@ -77,7 +78,7 @@ class App extends Component {
     } else {
       return (
       <div className="App">
-        <Search fetchData={this.fetchData} />
+         <Search fetchData={this.fetchData} handleLocationUpdate={this.updateLocation} location={this.state.location}/>
         <CurrentWeather
           city={this.state.city}
           state={this.state.state}
