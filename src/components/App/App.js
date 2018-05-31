@@ -28,7 +28,7 @@ class App extends Component {
     let city = locationArray[0];
     let state = locationArray[1];
     const url = `http://api.wunderground.com/api/${apiKey}/conditions/geolookup/hourly/forecast10day/q/${state}/${city}.json`;
-    const promise = fetch(url)
+    fetch(url)
     .then(data => data.json())
     .then(parsedData =>
       this.setState({
@@ -40,7 +40,6 @@ class App extends Component {
       }))
       .then(data => this.sendToLocalStorage())
       .catch(error => alert( 'This is not a valid location' ))
-      return promise;
     }
     
     sendToLocalStorage() {
@@ -60,7 +59,7 @@ class App extends Component {
     }
     
     componentDidMount() {
-      if (localStorage.length > 0) {
+      if (localStorage.localWeather) {
         this.getFromLocalStorage();
       };
     };
