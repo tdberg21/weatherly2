@@ -14,6 +14,7 @@ class App extends Component {
   constructor() {
     super();
     this.fetchData.bind(this);
+    this.updateLocation.bind(this);
     this.state = {
       location: '',
       city: '',
@@ -22,6 +23,10 @@ class App extends Component {
       sevenHour: [],
       tenDay: []
     }
+  }
+
+  updateLocation = (event) => {
+    this.setState( { location: event.target.value })
   }
 
   fetchData = () => {
@@ -49,21 +54,13 @@ class App extends Component {
       return (
         <div>
           <Welcome />
-          <div className="search-container">
-            <input type='text' placeholder='Enter a City and State or a Zip Code' onChange={(event) => {
-            this.setState({
-              location: event.target.value
-            })
-          }}
-          />
-          <button className="submitButton" onClick={this.fetchData}>Submit</button>
-          </div>
+          <Search fetchData={this.fetchData} handleLocationUpdate={this.updateLocation} location={this.state.location}/>
         </div>
       )   
     } else {
       return (
       <div className="App">
-        <Search fetchData={this.fetchData} />
+         <Search fetchData={this.fetchData} handleLocationUpdate={this.updateLocation} location={this.state.location}/>
         <CurrentWeather
           city={this.state.city}
           state={this.state.state}
