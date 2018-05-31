@@ -16,7 +16,6 @@ class App extends Component {
     this.fetchData.bind(this);
     this.updateLocation.bind(this);
     this.state = {
-      location: '',
       city: '',
       state: '',
       currentWeather: [],
@@ -25,13 +24,8 @@ class App extends Component {
     }
   }
 
-  updateLocation = (event) => {
-    this.setState( { location: event.target.value })
-  }
-
-  fetchData = () => {
-    let locationInput = this.state.location
-    let locationArray = locationInput.split(',');
+  fetchData = (location) => {
+    let locationArray = location.split(',');
     let city = locationArray[0];
     let state = locationArray[1];
     const url = `http://api.wunderground.com/api/${apiKey}/conditions/geolookup/hourly/forecast10day/q/${state}/${city}.json`;
@@ -45,16 +39,40 @@ class App extends Component {
           sevenHour: cleanSevenData(parsedData),
           tenDay: cleanTenData(parsedData)
         }))
+        .then(data => this.sendToLocalStorage())
       .catch(error => alert( 'This is not a valid location' ));
       return promise;
     }
+
+
+  sendToLocalStorage() {
+    let stringifiedWeather = JSON.stringify(this.state);
+    localStorage.setItem('localWeather', stringifiedWeather);
+  }
+
+  getFromLocalStorage() {
+    let localWeather = JSON.parse(localStorage.getItem('localWeather'));
+    this.setState({
+      city: localWeather.city,
+      state: localWeather.state,
+      currentWeather: localWeather.currentWeather,
+      sevenHour: localWeather.sevenHour,
+      tenDay: localWeather.tenDay
+    })
+  }
+
+  componentDidMount() {
+    if (localStorage.length > 0) {
+      this.getFromLocalStorage();
+    }
+  }  
 
   render() {
     if (!this.state.city) {
       return (
         <div>
           <Welcome />
-          <Search fetchData={this.fetchData} handleLocationUpdate={this.updateLocation} location={this.state.location}/>
+          <Search fetchData={this.fetchData} />
         </div>
       )   
     } else {
