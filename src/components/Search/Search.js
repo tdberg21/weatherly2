@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 class Search extends Component{ 
   constructor (props) {
     super(props);
-    // this.submitLocationToApp = this.submitLocationToApp.bind()
+    this.submitLocationToApp = this.submitLocationToApp.bind(this);
+    this.updateLocation = this.updateLocation.bind(this);
     this.state = { 
       location: ''
     };
@@ -14,20 +15,20 @@ class Search extends Component{
     this.setState( { location: event.target.value })
   }
 
-  // submitLocationToApp() {
-  //   this.props.fetchData(this.state.location)
-  // }
+  submitLocationToApp() {
+    console.log(this)
+    this.props.fetchData(this.state.location)
+    this.setState({
+      location: ''
+    })
+  }
 
   render() {
     return(
       <div className="search-container">
-        <input type='text' placeholder='Enter a City and State or a Zip Code.' onChange={(event) => {
-          this.setState({
-            location: event.target.value
-          })
-        }}
+        <input type='text' placeholder='Enter a City and State or a Zip Code.' onChange={this.updateLocation}
         />
-        <button className="submitButton"onClick={this.fetchData}>Submit</button>
+        <button className="submitButton"onClick={this.submitLocationToApp}>Submit</button>
       </div>
       )
   }
