@@ -24,4 +24,73 @@ import { shallow } from 'enzyme';
         conditionSummary={props.conditionSummary} />);
       expect(wrapper.find('h3').text()).toEqual('Sterling, VA');
     })
+
+    test('should display the correct current temperature', () => {
+      const props = {
+        city: 'Sterling',
+        state: 'VA',
+        currTemp: '70',
+        highTemp: '80',
+        lowTemp: '60',
+        currConditions: 'cloudy',
+        conditionSummary: 'cloudy'
+      }
+
+      console.log(props)
+      const wrapper = shallow(<CurrentWeather
+        city={props.city}
+        state={props.state}
+        currTemp={props.currTemp}
+        highTemp={props.highTemp}
+        lowTemp={props.lowTemp}
+        currConditions={props.currConditions}
+        conditionSummary={props.conditionSummary} />)
+      expect(wrapper.find('.currentTemp').text()).toEqual(' 70 ℉');
+    })
+
+  test('should display the correct high and low temperature', () => {
+      const props = {
+        city: 'Sterling',
+        state: 'VA',
+        currTemp: '70',
+        highTemp: '80',
+        lowTemp: '60',
+        currConditions: 'cloudy',
+        conditionSummary: 'cloudy'
+      }
+
+      const wrapper = shallow(<CurrentWeather
+        city={props.city}
+        state={props.state}
+        currTemp={props.currTemp}
+        highTemp={props.highTemp}
+        lowTemp={props.lowTemp}
+        currConditions={props.currConditions}
+        conditionSummary={props.conditionSummary} />)
+      expect(wrapper.find('.highLowTemp').text()).toEqual('80℉  60℉');
+    })
+
+  test('should display the current conditions', () => {
+      const props = {
+        city: 'Sterling',
+        state: 'VA',
+        currTemp: '70',
+        highTemp: '80',
+        lowTemp: '60',
+        currConditions: 'cloudy',
+        conditionSummary: 'cloudy'
+      }
+
+      const wrapper = shallow(<CurrentWeather
+        city={props.city}
+        state={props.state}
+        currTemp={props.currTemp}
+        highTemp={props.highTemp}
+        lowTemp={props.lowTemp}
+        currConditions={props.currConditions}
+        conditionSummary={props.conditionSummary} />)
+
+      expect(wrapper.find('.currentConditions').text()).toEqual('cloudy')
+
+  })
   });
