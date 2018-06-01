@@ -1,6 +1,7 @@
 import React from 'react';
 import SevenHour from './SevenHour.js';
 import { shallow } from 'enzyme';
+import Card from '../Card/Card.js';
 
 describe('Seven Hour', () => {
 
@@ -14,6 +15,23 @@ describe('Seven Hour', () => {
     const actual = renderedSevenHour.find('Card').length;
 
     expect(actual).toBe(expected);
+  });
+
+  test('each card should display the correct day hour', () => {
+    const props = {
+      hour: '1:00',
+      image: 'http://icons.wxug.com/i/c/k/clear.gif',
+      temp: '89',
+      key: 1
+    };
+
+    const wrapper = shallow(<Card
+      hour={props.hour}
+      image={props.image}
+      temp={props.temp}
+      key={props.key}
+    />);
+    expect(wrapper.find('.hour').text()).toEqual('1:00');
   });
 });
  
