@@ -61,10 +61,11 @@ describe('App default state', () => {
   })
 });
 
-describe('App Unit Tests', () => {
+describe('App Tests', () => {
   test('if there is no location, it should render the welcome component', () => {
     const renderedApp = shallow(<App />, { disableLifecycleMethods:true })
     const mockState = {
+      location: '',
       city: '',
       state: '',
       currentWeather: [],
@@ -82,6 +83,7 @@ describe('App Unit Tests', () => {
   test('if there is a location, it should render the current weather', () => {
     const renderedApp = shallow(<App />, { disableLifecycleMethods: true })
     const mockState = {
+      location: 'Sterling, VA',
       city: 'Sterling',
       state: 'VA',
     };
