@@ -1,5 +1,5 @@
 import React from 'react';
-import CurrentWeather from './CurrentWeather.js'
+import CurrentWeather from './CurrentWeather.js';
 import { shallow } from 'enzyme';
 
   describe('Current Weather Tests', () => {
@@ -14,7 +14,8 @@ import { shallow } from 'enzyme';
         lowTemp: '60',
         currConditions: 'cloudy',
         conditionSummary: 'cloudy'
-      }
+      };
+
       const wrapper = shallow(<CurrentWeather 
         location={props.location}
         city={props.city}
@@ -25,7 +26,7 @@ import { shallow } from 'enzyme';
         currConditions={props.currConditions}
         conditionSummary={props.conditionSummary} />);
       expect(wrapper.find('h3').text()).toEqual('Sterling, VA');
-    })
+    });
 
     test('should display the correct current temperature', () => {
       const props = {

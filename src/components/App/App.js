@@ -33,9 +33,9 @@ class App extends Component {
     .then(data => data.json())
     .then(parsedData =>
       this.setState({
-        location: location,
-        city: city,
-        state: state,
+        location: parsedData.current_observation.display_location.full,
+        city: parsedData.current_observation.display_location.city,
+        state: parsedData.current_observation.display_location.state,
         currentWeather: cleanData(parsedData),
         sevenHour: cleanSevenData(parsedData),
         tenDay: cleanTenData(parsedData)
