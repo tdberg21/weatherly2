@@ -26,10 +26,11 @@ describe('Search unit test', () => {
   
   test('when submit location to app is invoked the prop function is invoked with the correct arguments and state is reset to an empty string', () => {
     
-    const mockSubmitLocation = jest.fn() 
+    const mockSubmitLocation = jest.fn()
+    const mockFetchData = jest.fn() 
     
     const renderSearch = shallow(<Search 
-      submitLocation = { mockSubmitLocation }/>)
+      fetchData = { mockFetchData }/>)
     
       const expectedArguments = 'Portland';
       
@@ -37,11 +38,8 @@ describe('Search unit test', () => {
       renderSearch.instance().submitLocationToApp({preventDefault: jest.fn()})
       
       
-      expect(submitLocationToApp).toHaveBeenCalledWith(expectedArguments)
+      expect(mockFetchData).toHaveBeenCalledWith(expectedArguments)
     })
-    
-    
-
   })
   
 
