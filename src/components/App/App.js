@@ -25,9 +25,6 @@ class App extends Component {
   }
   
   fetchData = (location) => {
-    let locationArray = location.split(',');
-    let city = locationArray[0];
-    let state = locationArray[1];
     const url = `http://api.wunderground.com/api/${apiKey}/conditions/geolookup/hourly/forecast10day/q/${location}.json`;
     fetch(url)
     .then(data => data.json())
