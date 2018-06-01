@@ -39,7 +39,6 @@ import { shallow } from 'enzyme';
         conditionSummary: 'cloudy'
       }
 
-      console.log(props)
       const wrapper = shallow(<CurrentWeather
         location={props.location}
         city={props.city}
