@@ -7,7 +7,6 @@ class TenDay extends Component {
   constructor(props) {
     super();
   };
-  
   render() {
     return (
       <div className="tenDay">

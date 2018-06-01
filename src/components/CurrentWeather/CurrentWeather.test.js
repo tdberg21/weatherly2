@@ -2,33 +2,26 @@ import React from 'react';
 import CurrentWeather from './CurrentWeather.js'
 import { shallow } from 'enzyme';
 
-  describe('Current Weather Unit Tests', () => {
-    test('should return true', () => {
-      const expected = true;
-      const actual = true;
+  describe('Current Weather Tests', () => {
 
-      expect(actual).toEqual(expected);
-    });
-
-    test('it should render with the correct props', () => {
-      const expectedCurrentWeather = {
+    test('should display the right location', () => {
+      const props = {
         city: 'Sterling',
         state: 'VA',
-        currTemp: '69',
-        highTemp: '69',
-        lowTemp: '69',
-        currConditions: 'bitchin',
-        conditionSummary: 'bitchinnnnnn'
+        currTemp: '70',
+        highTemp: '80',
+        lowTemp: '60',
+        currConditions: 'cloudy',
+        conditionSummary: 'cloudy'
       }
-      const renderedCurrentWeather = shallow(<CurrentWeather city='Sterling'
-        state= 'VA'
-        currTemp= '69'
-        highTemp= '69'
-        lowTemp= '69'
-        currConditions= 'bitchin'
-        conditionSummary= 'cloudy'/>);
-      console.log(renderedCurrentWeather.props);
-      const actualCurrentWeather = renderedCurrentWeather.find('props');
-      expect(actualCurrentWeather).toEqual(expectedCurrentWeather);
+      const wrapper = shallow(<CurrentWeather 
+        city={props.city}
+        state={props.state}
+        currTemp={props.currTemp}
+        highTemp={props.highTemp}
+        lowTemp={props.lowTemp}
+        currConditions={props.currConditions}
+        conditionSummary={props.conditionSummary} />);
+      expect(wrapper.find('h3').text()).toEqual('Sterling, VA');
     })
   });
