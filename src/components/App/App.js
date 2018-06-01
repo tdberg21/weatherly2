@@ -15,6 +15,7 @@ class App extends Component {
     super();
     this.fetchData.bind(this);
     this.state = {
+      location: '',
       city: '',
       state: '',
       currentWeather: [],
@@ -27,13 +28,14 @@ class App extends Component {
     let locationArray = location.split(',');
     let city = locationArray[0];
     let state = locationArray[1];
-    const url = `http://api.wunderground.com/api/${apiKey}/conditions/geolookup/hourly/forecast10day/q/${state}/${city}.json`;
+    const url = `http://api.wunderground.com/api/${apiKey}/conditions/geolookup/hourly/forecast10day/q/${location}.json`;
     fetch(url)
     .then(data => data.json())
     .then(parsedData =>
       this.setState({
-        city: city,
-        state: state,
+        location: parsedData.current_observation.display_location.full,
+        city: parsedData.current_observation.display_location.city,
+        state: parsedData.current_observation.display_location.state,
         currentWeather: cleanData(parsedData),
         sevenHour: cleanSevenData(parsedData),
         tenDay: cleanTenData(parsedData)
@@ -49,13 +51,7 @@ class App extends Component {
     
     getFromLocalStorage() {
       let localWeather = JSON.parse(localStorage.getItem('localWeather'));
-      this.setState({
-        city: localWeather.city,
-        state: localWeather.state,
-        currentWeather: localWeather.currentWeather,
-        sevenHour: localWeather.sevenHour,
-        tenDay: localWeather.tenDay
-      })
+      this.fetchData(localWeather.location);
     }
     
     componentDidMount() {
@@ -77,6 +73,7 @@ class App extends Component {
           <div className="App">
           <Search fetchData={this.fetchData} />
           <CurrentWeather
+          location={this.state.location}
           city={this.state.city}
           state={this.state.state}
           currTemp={this.state.currentWeather.currTemp}
