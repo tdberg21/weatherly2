@@ -16,7 +16,7 @@ it('renders without crashing', () => {
 describe('App default state', () => {
   
   test('should have a default city of an empty string', () => {
-    const renderedApp = shallow(<App />)
+    const renderedApp = shallow(<App />);
     
     const expectedCity = '';
     const actualCity = renderedApp.state('city');
@@ -25,7 +25,7 @@ describe('App default state', () => {
   })
   
   test('should have a default state of an empty string', () => {
-    const renderedApp = shallow(<App />)
+    const renderedApp = shallow(<App />);
     
     const expectedState = '';
     const actualState = renderedApp.state('state');
@@ -52,7 +52,7 @@ describe('App default state', () => {
   })
   
   test('should have a tenDay of an empty Array', () => {
-    const renderedApp = shallow(<App />)
+    const renderedApp = shallow(<App />);
     
     const expectedTenDay = [];
     const actualTenDay = renderedApp.state('tenDay');
@@ -63,7 +63,7 @@ describe('App default state', () => {
 
 describe('App Tests', () => {
   test('if there is no location, it should render the welcome component', () => {
-    const renderedApp = shallow(<App />, { disableLifecycleMethods:true })
+    const renderedApp = shallow(<App />, { disableLifecycleMethods: true });
     const mockState = {
       location: '',
       city: '',
@@ -81,7 +81,7 @@ describe('App Tests', () => {
   });
 
   test('if there is a location, it should render the current weather', () => {
-    const renderedApp = shallow(<App />, { disableLifecycleMethods: true })
+    const renderedApp = shallow(<App />, { disableLifecycleMethods: true });
     const mockState = {
       location: 'Sterling, VA',
       city: 'Sterling',
