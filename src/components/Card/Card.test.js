@@ -18,4 +18,16 @@ describe('Card Tests', () => {
 
     expect(actual).toHaveLength(1);
   });
+
+  test('if it has a prop of sevenCard, it should render sevenHour card', () => {
+    const renderedSevenCard= shallow(<Card 
+      hour='9:00am'
+      image={cleanData(data).image}
+      temp= '79'
+      key={8} />)
+
+    const actual = renderedSevenCard.find('.sevenCard');
+
+    expect(actual).toHaveLength(1);
+  })    
 });

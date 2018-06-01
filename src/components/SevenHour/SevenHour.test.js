@@ -16,6 +16,4 @@ describe('Seven Hour', () => {
     expect(actual).toBe(expected);
   });
 });
-
-
-let mockSevenHourArray = [{ hour: "12:00 PM", img: "http://icons.wxug.com/i/c/k/clear.gif", temp: "84.5" }, { hour: "1:00 PM", img: "http://icons.wxug.com/i/c/k/clear.gif", temp: "85.9" }, { hour: "2:00 PM", img: "http://icons.wxug.com/i/c/k/clear.gif", temp: "86.9" }, { hour: "3:00 PM", img: "http://icons.wxug.com/i/c/k/clear.gif", temp: "88.2" }, { hour: "4:00 PM", img: "http://icons.wxug.com/i/c/k/clear.gif", temp: "89.4" }, { hour: "5:00 PM", img: "http://icons.wxug.com/i/c/k/partlycloudy.gif", temp: "88.8" }, { hour: "6:00 PM", img: "http://icons.wxug.com/i/c/k/partlycloudy.gif", temp: "87.8" }]
+ 
